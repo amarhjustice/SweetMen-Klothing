@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetMen Kloding</title>
+    <link rel="icon" type="image/png" href="assets/logosw.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <header class="header">
+        <nav class="navbar">
+            <a href="#home" class="logo">
+                <img src="assets/logosw.png" alt="SKLODING Logo" class="logo-img" onerror="this.onerror=null;this.src='https://placehold.co/40x40/047857/FFFFFF?text=Logo';"><span class="logo-text">SweetMen Kloding</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="navbar-link">Home</a></li>
+                <li><a href="#about" class="navbar-link">About</a></li>
+                <li><a href="#gallery" class="navbar-link">Gallery</a></li>
+                <li><a href="#contact" class="navbar-link">Contact</a></li>
+            </ul>
+            <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Open mobile menu">
+                <svg class="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="mobile-menu hidden">
+            <button id="close-mobile-menu" class="close-mobile-menu"><i class="fas fa-times"></i></button>
+            <a href="#home" class="mobile-menu-link">Home</a>
+            <a href="#about" class="mobile-menu-link">About</a>
+            <a href="#gallery" class="mobile-menu-link">Gallery</a>
+            <a href="#contact" class="mobile-menu-link">Contact</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="home" class="hero-section" >
+            <div class="hero-background-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title hero-title-animate opacity-0">
+                    <span>SweetMen Kloding </span> 
+                </h1>
+                <p class="hero-title-animate opacity-0">Stylish, high-quality African menswear that honors culture, inspires confidence, and defines modern elegance.</p>
+                <a href="#gallery" class="hero-button hero-button-animate opacity-0">
+                    Discover Our World
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="about-section fade-in-up">
+            <div class="about-container">
+                    <div class="about-slideshow-wrapper">
+                            <div class="slideshow-container">
+                                <img class="about-slide active" src="assets/groupimage.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9FE6B9/212529?text=Brand+Story+1';" alt="Fashion brand story image 1">
+                                <img class="about-slide" src="assets/groom2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/34D399/FFFFFF?text=Fashion+Brand+2';" alt="Fashion brand story image 2">
+                                <img class="about-slide" src="assets/groom3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/047857/FFFFFF?text=Fashion+Brand+3';" alt="Fashion brand story image 3">
+
+                                <a class="prev-slide" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next-slide" onclick="plusSlides(1)">&#10095;</a>
+
+                                <div class="slideshow-dots">
+                                    <span class="dot active" onclick="currentSlide(1)"></span>
+                                    <span class="dot" onclick="currentSlide(2)"></span>
+                                    <span class="dot" onclick="currentSlide(3)"></span>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="about-text-content">
+                        <div class="about-text-slide active">
+                            <h2 class="about-title fade-in-up">About <span>SweetMen Kloding</span></h2>
+                                <p class="about-description fade-in-up">
+                                    SweetMen Kloding was founded with a passion for
+                                    redefining African menswear, blending traditional elegance with modern
+                                    flair. Our journey began with a simple belief:
+                                    fashion should be a powerful expression of identity and culture.
+                                </p>
+                                <a href="#gallery" class="about-button fade-in-up">Explore Our Collection</a>
+                        </div>
+
+                        <div class="about-text-slide">
+                            <h2 class="about-title fade-in-up">Our <span>Mission</span></h2>
+                            <p class="about-mission-text fade-in-up">
+                                Our mission is to empower men through exceptional clothing that celebrates heritage,
+                                promotes sustainability, and inspires confidence. We are committed to ethical
+                                practices and sourcing premium materials.
+                            </p>
+                            <a href="#contact" class="about-button fade-in-up">Contact Us</a>
+                        </div>
+
+                        <div class="about-text-slide">
+                            <h2 class="about-title fade-in-up">Our <span>Vision</span></h2>
+                            <p class="about-vision-text fade-in-up">
+                                Our vision is to be the leading voice in contemporary African menswear, recognized
+                                globally for our innovative designs and unwavering commitment to quality.
+                                We aim to expand our reach and impact, bringing unique styles to the world.
+                            </p>
+                            <a href="#gallery" class="about-button fade-in-up">View Latest Designs</a>
+                        </div>
+
+                    </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section fade-in-up">
+            <div class="gallery-container">
+                <h2 class="gallery-title">Our Latest Collections</h2>
+
+                <div class="carousel-wrapper">
+                    <div id="carousel-track" class="carousel-track">
+                        <div class="gallery-item">
+                            <img src="assets/agbada.jpg" alt="Exquisite Agbada Collection" class="gallery-item-img" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/22C55E/FFFFFF?text=Agbada+Collection';">
+                            <div class="gallery-overlay">
+                                <h3>Exquisite Agbada Collection</h3>
+                                <p>Handcrafted Agbadas blending tradition with modern elegance, perfect for grand occasions.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/Jalabiya.jpg" alt="Contemporary Jalabiya Design" class="gallery-item-img" onerror="this.onerror=null;this.src='https://placehold.co/600x800/16A34A/FFFFFF?text=Contemporary+Jalabiya';">
+                            <div class="gallery-overlay">
+                                <h3>Contemporary Jalabiya Design</h3>
+                                <p>Modern interpretations of traditional wear, offering comfort and refined style.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/ankarastyle2.jpeg" alt="Modern Ankara Styles" class="gallery-item-img" onerror="this.onerror=null;this.src='https://placehold.co/600x800/86EFAC/1A1A1A?text=Modern+Ankara';">
+                            <div class="gallery-overlay">
+                                <h3>Modern Ankara Styles</h3>
+                                <p>Bold patterns meet contemporary cuts for a distinctive statement.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/casual.jpg" alt="Casual Summer Set" class="gallery-item-img" onerror="this.onerror=null;this.src='https://placehold.co/600x1200/047857/FFFFFF?text=Casual+Summer+Set';">
+                            <div class="gallery-overlay">
+                                <h3>Casual Summer Set</h3>
+                                <p>Relaxed and stylish, perfect for everyday wear and summer outings.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/senata_style.jpg" alt="Modern Senator Style" class="gallery-item-img" onerror="this.onerror=null;this.src='https://placehold.co/600x800/34D399/FFFFFF?text=Modern+Senator';">
+                            <div class="gallery-overlay">
+                                <h3>Modern Senator Style</h3>
+                                <p>Sleek and sophisticated attire for the contemporary gentleman.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/kaftan.jpg" alt="Classic Kaftan Style" class="gallery-item-img" onerror="this.onerror=null;this.src='https://placehold.co/600x800/9FE6B9/212529?text=Classic+Kaftan';">
+                            <div class="gallery-overlay">
+                                <h3>Classic Kaftan Style</h3>
+                                <p>Versatile and elegant kaftans for various occasions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+        <section id="testimonials" class="testimonials-section fade-in-up">
+    <div class="testimonials-container">
+        <div class="testimonials-intro">
+            <h2 class="testimonials-title">From our <span class="highlight">community.</span></h2>
+            <p class="testimonials-description">
+                Here's what our valued clients have to say about SweetMen Kloding.
+            </p>
+            <div class="testimonial-navigation">
+                <button class="arrow-button prev-testimonial">&#8592;</button>
+                <button class="arrow-button next-testimonial">&#8594;</button>
+            </div>
+        </div>
+
+        <div class="testimonial-carousel-wrapper">
+            <div class="testimonial-item active">
+                <blockquote class="testimonial-quote">
+                    <span class="quote-icon">&ldquo;</span>
+                    SweetMen Kloding has truly elevated my style, blending traditional elegance
+                    with modern flair. I've never felt more confident and unique in my outfits.
+                    Their craftsmanship is unparalleled!
+                </blockquote>
+                <div class="testimonial-author">
+                    <img src="assets/profile (2).jpg" alt="Client Avatar" class="author-avatar">
+                    <div>
+                        <p class="author-name">Nana Kwesi</p>
+                        <p class="author-title">Entrepreneur, Accra</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-item">
+                 <blockquote class="testimonial-quote">
+                    <span class="quote-icon">&ldquo;</span>
+                    The attention to detail and personalized service from SweetMen Kloding
+                    is exceptional. Every piece feels custom-made and carries a story.
+                    Highly recommend for anyone seeking authentic African menswear.
+                </blockquote>
+                <div class="testimonial-author">
+                    <img src="assets/profile (2).jpg" alt="Client Avatar" class="author-avatar">
+                    <div>
+                        <p class="author-name">Kwame Mensah</p>
+                        <p class="author-title">Fashion Enthusiast, Tema</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-item">
+                 <blockquote class="testimonial-quote">
+                    <span class="quote-icon">&ldquo;</span>
+                    SweetMen Kloding delivered beyond my expectations. The fabrics are luxurious,
+                    the fit is perfect, and I always receive compliments when I wear their designs.
+                    They truly understand modern African aesthetics.
+                </blockquote>
+                <div class="testimonial-author">
+                    <img src="assets/profile (2).jpg" alt="Client Avatar" class="author-avatar">
+                    <div>
+                        <p class="author-name">Akwasi Boateng</p>
+                        <p class="author-title">Creative Director, Kumasi</p>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <section id="contact" class="contact-section fade-in-up">
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2 class="contact-title">Contact Us</h2>
+            <p class="contact-description">
+                Not sure what you need? The team at SweetMen Kloding will be happy to listen to
+                you and suggest elegant African menswear you hadn't considered.
+            </p>
+            <div class="contact-details">
+                <div class="detail-item">
+                    <i class="fa fa-thumb-tack"></i>
+                    <span>Greater Accra, Osu</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0241353681 / 0534797499</span>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form-wrapper">
+            <div class="contact-form-card">
+                <div class="form-header">
+                    <h3>We'd love to hear from you!</h3>
+                    <p>Let's get in touch</p>
+                    <div class="decorative-circles">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <form id="contact-form" class="contact-form"  action="https://formspree.io/f/manjjyog" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" name="name" placeholder="Your Full Name" class="contact-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="olivia@untitledui.com" class="contact-input" required>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <div class="phone-input-group">
+                          <!--   <select class="country-code-select" name="country-code">
+                            <option value="+233">GH</option>
+                            <option value="+1">US</option>
+                            <option value="+234">NIG</option>
+                            </select> -->
+                            <input type="tel" id="phone" name="phone" placeholder="(055) 000-0000" class="contact-input phone-number-input">
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Type your message here" rows="5" class="contact-input message-input" required></textarea>
+                    </div>
+
+                    <button type="submit" class="contact-button">
+                        Send Message
+                    </button>
+                     <p id="form-status"  style="margin-top: 10px;"></p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+       
+       
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 SweetMen Kloding. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/19JJ9i7oi4/?mibextid=wwXIfr" target="_blank" aria-label="Facebook" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/sweetmen_kloding?igsh=MWdweGR0NHJ2aHg5Mw==" target="_blank" aria-label="Instagram" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+              <!--   <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a> -->
+                 <a href="https://www.tiktok.com/@sweetmen.klothing?is_from_webapp=1&sender_device=pc" target="_blank" aria-label="Twitter" class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

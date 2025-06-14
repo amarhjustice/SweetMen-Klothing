@@ -1,0 +1,2675 @@
+/*
+    Pure CSS for SKLODING Fashion Portfolio
+    This file replaces all Tailwind CSS utility classes with custom CSS rules.
+    It's designed to be clean, well-structured, and easy to understand/modify.
+*/
+
+/*
+    --------------------------------------------------------------------------
+    1. CSS Variables (Custom Properties)
+    --------------------------------------------------------------------------
+    Defines the color palette and other common values for easy theme management.
+*/
+*{
+    margin: 0;
+    box-sizing: content-box;
+    /* outline: 1px solid red; */
+}
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+:root {
+    /* Primary Brand Colors (updated green scale for modernity) */
+    --color-primary-light: #7A5F8C; /* Softer green */
+    --color-primary-default: #B794F6; /* Vibrant, slightly desaturated green */
+    --color-primary-dark: #5D377A;
+    --color-alternate-green:#7A5F8C; /* Rich, dark green */
+
+    /* Neutral Colors (softer, contemporary grays) */
+    --color-text-dark: #212529; /* Very dark gray */
+    --color-text-medium: #495057; /* Darker gray for body text */
+    --color-text-light: #6C757D; /* Medium gray for subtle text */
+    --color-bg-light: #F8F9FA; /* Very light, almost white background */
+    --color-bg-medium: #E9ECEF; /* Light gray for cards/sections */
+    --color-bg-white: #FFFFFF; /* Pure white */
+
+    /* Accent Colors (using a primary shade for consistency) */
+    --color-accent-green: #34D399; /* Matches primary-default for accent */
+
+    /* Scrollbar Colors */
+    --scrollbar-track: var(--color-bg-medium);
+    --scrollbar-thumb: var(--color-text-light);
+    --scrollbar-thumb-hover: var(--color-text-medium);
+}
+
+/*
+    --------------------------------------------------------------------------
+    2. Base Styles & Global Utilities
+    --------------------------------------------------------------------------
+    Styles applied globally or reset common elements.
+*/
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Sets the primary font */
+    background-color: var(--color-bg-light); /* Light background for the whole page */
+    color: var(--color-text-medium); /* Default text color */
+    -webkit-font-smoothing: antialiased; /* Improves font rendering on macOS/iOS */
+    -moz-osx-font-smoothing: grayscale; /* Improves font rendering on Firefox for macOS */
+    line-height: 1.6; /* Standard line height for readability */
+}
+
+/* Container for consistent content width and centering */
+.container {
+    max-width: 1280px; /* Equivalent to Tailwind's max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* Equivalent to px-6 */
+    padding-right: 1.5rem; /* Equivalent to px-6 */
+}
+
+/* Remove default margin from headings for better control */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+/* Ensure images are responsive and don't overflow */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes extra space below images */
+}
+
+/* Custom scrollbar for a modern look */
+::-webkit-scrollbar {
+    width: 2px; /* Width of the scrollbar */
+}
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track); /* Background of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb); /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover); /* Color on hover */
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2); /* Softer shadow on hover */
+}
+
+/*
+    --------------------------------------------------------------------------
+    3. Header & Navigation Styles
+    --------------------------------------------------------------------------
+*/
+.header {
+    background-color: var(--color-bg-white); /* White background */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Softer, larger shadow */
+    padding-top: 1rem; /* py-4 */
+    padding-bottom: 1rem; /* py-4 */
+    position: fixed; /* Fixed at the top */
+    width: 100%; /* Full width */
+    z-index: 50; /* High z-index to stay on top */
+}
+
+.navbar {
+    display: flex; /* Flexbox for alignment */
+    justify-content: space-between; /* Space out items */
+    align-items: center; /* Vertically center items */
+    max-width: 1280px; /* Max width for content */
+   /*  margin-left: auto; */
+   /*  margin-right: auto; */
+    padding-left: 1.5rem;
+    padding-right: 0rem;
+}
+
+.logo {
+    display: flex; /* Flexbox for logo and text */
+    align-items: center; /* Vertically center */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    color: var(--color-text-dark); /* text-gray-900 */
+    /* letter-spacing: 0.05em;  *//* tracking-wider */
+    gap: 0.5rem; 
+}
+
+.header .navbar .logo-img {
+    height: 3rem; /* or adjust as needed */
+    width: auto;
+    display: block;
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+}
+/* .logo-img img{
+    width:300px;
+} */
+.logo-text {
+    color: var(--color-text-dark); /* text-gray-900 (explicitly set for logo text) */
+}
+
+.nav-links {
+    display: none; /* Hidden by default for mobile */
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    gap: 2.5rem; /* Increased spacing */
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.navbar-link {
+    position: relative;
+    font-weight: 500; /* font-medium */
+    color: var(--color-text-dark); /* Darker text on light background */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease-in-out, transform 0.2s ease-out;
+    padding: 0.5rem 0; /* Add padding for better touch target */
+}
+
+.navbar-link:hover {
+    color: var(--color-alternate-green); /* Darker green on hover */
+    transform: translateY(-2px); /* Subtle lift */
+}
+
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -8px; /* Lower underline */
+    width: 0;
+    height: 3px; /* Thicker underline */
+    background-color: var(--color-alternate-green); /* Default green underline */
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+    border-radius: 2px;
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Mobile Menu Button (Hamburger) */
+.mobile-menu-button {
+    display: block; /* Show on mobile */
+    color: var(--color-text-medium); /* text-gray-600 */
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0.5rem; /* p-2 */
+    /* border-radius: 0.375rem; */ /* rounded-md */
+    transition: background-color 0.3s ease; /* duration-300 */
+}
+
+.mobile-menu-button:focus {
+    outline: none; /* focus:outline-none */
+}
+
+.mobile-menu-button:hover {
+    background-color: var(--color-bg-medium); /* hover:bg-gray-100 */
+}
+
+.hamburger-icon {
+    width: 2rem; /* w-8 */
+    height: 2rem; /* h-8 */
+}
+
+/* Mobile Menu Overlay */
+#mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 30%; /* Slightly wider mobile menu */
+    max-width: 320px;
+    background-color: rgba(255, 255, 255, 0.67); /* Almost opaque white */
+    backdrop-filter: blur(10px); /* More blur */
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3rem 2.5rem; /* More padding */
+    transform: translateX(100%); /* Start off-screen */
+    transition: transform 0.3s ease-in , opacity 0.4s ease-in-out; /* Springy transition */
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+    pointer-events: none; /* Prevents interaction when hidden */
+    border-left: 1px solid var(--color-bg-medium); /* Subtle border */
+}
+
+#mobile-menu.visible {
+    transform: translateX(0%); /* Slide in */
+    opacity: 1;
+    pointer-events: auto; /* Allow interaction when visible */
+}
+
+#mobile-menu.hidden {
+    opacity: 0;
+    transform: translateX(100%); /* Slide out */
+}
+
+.close-mobile-menu {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    color: var(--color-text-dark);
+    font-size: 1.5rem; /* Larger close icon */
+    padding: 0.75rem;
+    /* border-radius: 50%; */
+    background-color: rgba(0, 0, 0, 0.08); /* Slightly darker background */
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: transparent;
+}
+
+.close-mobile-menu:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--color-primary-dark);
+    transform: rotate(90deg) scale(1.1);
+}
+
+.mobile-menu-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    color: var(--color-text-dark);
+    font-size: 20px; /* Larger font size */
+    font-weight: 500;
+     
+    margin-bottom: 1.25rem; /* More margin */
+    border-radius: 12px; /* More rounded corners */
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s, transform 0.2s;
+}
+
+.mobile-menu-link:hover {
+    color: var(--color-primary-dark);
+    background-color: var(--color-bg-medium);
+    transform: translateX(5px) scale(1.01); /* Slide and slight scale */
+}
+.mobile-menu-link::after{
+    color:var(--color-primary-dark);
+}
+
+/*
+    --------------------------------------------------------------------------
+    4. Main Content Area & Section Padding
+    --------------------------------------------------------------------------
+*/
+.main-content {
+    padding-top: 5rem; /* Increased padding to account for fixed header height (pt-20) */
+    width: 100%;
+}
+
+/* Section common padding */
+.hero-section,
+.about-section,
+.gallery-section,
+.contact-section {
+    padding-top: 5rem; /* py-20 */
+    padding-bottom: 5rem; /* py-20 */
+}
+
+
+
+/*
+    --------------------------------------------------------------------------
+    5. Hero Section Styles
+    --------------------------------------------------------------------------
+*/
+.hero-section {
+    position: relative;
+    background-size: cover; /* bg-cover */
+    background-position: center; /* bg-center */
+    min-height: 83vh; /* min-h-[65vh] */
+    display: flex; /* flex */
+    align-items: center; /* items-center */
+    justify-content: center; /* justify-center */
+    color: var(--color-bg-white); /* text-white */
+    overflow: hidden; /* overflow-hidden */
+     background-image:linear-gradient(rgba(45, 29, 70, 0.793),rgba(45, 29, 70, 0.793)),url(assets/backdrop.jpg) ;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 90vh; /* md:min-h-[85vh] */
+        
+    }
+}
+
+.hero-background-overlay{
+    position: absolute;
+    inset: 0;
+    /* Updated gradient: Blending green with a deep, muted burgundy/maroon */
+    background: linear-gradient(to right, 
+                rgba(4, 120, 87, 0.85) 0%, /* Dark Green */
+                rgba(128, 0, 32, 0.6) 50%, /* Muted Maroon (complementary to green) */
+                rgba(52, 211, 153, 0.85) 100% /* Vibrant Green */
+               );
+    background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23FFFFFF" fill-opacity="0.08"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 6v-4h-2V6h-4v2h4v4h2v-4h4V6h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM34 2v-2h-4v2h-2v4h2v4h4V6h2V2h-2zM4 2v-2H0v2h-2v4h2v4h4V6h2V2h-2z"%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+}
+
+.hero-section .hero-content {
+    position: relative; /* z-10 */
+    z-index: 10;
+    text-align: center; /* text-center */
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    max-width: 100%; /* max-w-5xl (increased from default Tailwind equivalent) */
+}
+
+.main-content .hero-section  .hero-content p{
+    font-size: 1.5rem;
+    line-height: 1.2;
+    display: flex;
+    text-align: center;
+    font-weight: 600;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero-content .hero-title {
+    font-size: 3.5rem; /* slightly smaller by default */
+    max-width: 100%;
+    width: 100%;
+    line-height: 1.2;
+    letter-spacing: -0.05em;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    display: block; /* or remove display: flex */
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+}
+.hero-section .hero-content .hero-title span {
+    color: var(--color-accent-green);
+    font-size: 4rem;
+    white-space: nowrap; /* Keeps 'SweetMen Kloding' together */
+}
+
+@media (max-width: 768px) {
+     /* .hero-content .hero-title span{ */
+        /* font-size: 2rem; */
+    /* } */
+   /* .hero-content .hero-title { */
+       /*  font-size: 1rem; /* Reduced from 4.5rem */ 
+        
+       
+   /*  } */
+   /*  .hero-content .hero-title p{
+        font-size: 0.2rem;
+    } */
+   
+}
+
+@media (max-width: 1024px) {
+   /* .hero-content .hero-title {
+        font-size:1.5rem;  
+    }
+     .hero-content .hero-title p{
+        font-size: 1rem;
+    } */
+}
+
+.hero-section .hero-content .hero-button {
+    display: inline-block; /* inline-block */
+    background-color: var(--color-bg-white); /* bg-white */
+    color: var(--color-text-dark); /* text-gray-900 */
+    padding: 1.25rem 3rem; /* px-12 py-5 */
+    border-radius: 9999px; /* rounded-full */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* duration-300 transform */
+    text-decoration: none; /* Remove underline */
+    opacity: 0; /* opacity-0 for animation */
+}
+
+.hero-section .hero-content .hero-button:hover {
+    background-color: #f9fafb; /* hover:bg-gray-50 */
+    transform: scale(1.05); /* hover:scale-105 */
+}
+
+/* Hero Section Animation */
+.hero-title-animate {
+    animation: fadeInScaleUp 1.2s ease-out forwards; /* Slower, more impactful */
+    animation-delay: 0.3s;
+}
+
+.hero-button-animate {
+    animation: fadeInScaleUp 1.2s ease-out forwards;
+    animation-delay: 0.9s;
+}
+
+@keyframes fadeInScaleUp {
+    from { opacity: 0; transform: scale(0.95) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+
+
+
+
+
+
+
+
+/*
+    -------------------------------------------------------------------------
+    7.5. Testimonials Section Styles
+    -------------------------------------------------------------------------
+*/
+.testimonials-section {
+    background-color: var(--color-bg-light); /* Light background, similar to your current light sections */
+    padding: 6rem 1.5rem; /* py-24 px-6, generous padding */
+    height: 70vh;
+     /* Flex container for layout */
+   
+    
+}
+
+.testimonials-container {
+    max-width: 1280px; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    gap: 3rem; /* Space between left intro and right testimonial */
+    align-items: center; /* Center items on mobile */
+    text-align: center; /* Center text on mobile */
+    
+}
+
+@media (min-width: 768px) {
+    .testimonials-container {
+        flex-direction: row; /* Side-by-side on desktop */
+        text-align: left; /* Align text left on desktop */
+        justify-content: space-between; /* Space out the two columns */
+        align-items: flex-start; /* Align content to the top */
+        gap: 5rem; /* More space on desktop */
+    }
+}
+
+/* Left Intro Column */
+.testimonials-intro {
+    width: 100%;
+    max-width: 28rem; /* Control max-width similar to contact info */
+    flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+@media (min-width: 768px) {
+    .testimonials-intro {
+        width: 40%; /* Allocate space for intro */
+    }
+}
+
+.testimonials-title {
+    font-size: 5rem; /* text-5xl */
+    font-weight: 700; /* font-bold */
+    color: var(--color-text-dark); /* Dark text */
+    margin-bottom: 1rem; /* mb-4 */
+    line-height: 1.2;
+}
+
+.testimonials-title .highlight {
+    color: #6C47A2; /* Use your purple for the highlight, or adjust to var(--color-primary-default) */
+}
+
+.testimonials-description {
+    font-size: 1.125rem; /* text-lg */
+    color: var(--color-text-medium); /* Medium gray text */
+    line-height: 1.6;
+    margin-bottom: 3rem; /* mb-12 */
+}
+
+.testimonial-navigation {
+    display: flex;
+    justify-content: center; /* Center arrows on mobile */
+    gap: 1.5rem; /* space-x-6 */
+}
+
+@media (min-width: 768px) {
+    .testimonial-navigation {
+        justify-content: flex-start; /* Align arrows left on desktop */
+    }
+}
+
+.arrow-button {
+    background-color: var(--color-bg-white); /* White background */
+    border: 1px solid var(--color-bg-medium); /* Light border */
+    border-radius: 9999px; /* Fully rounded */
+    width: 50px; /* Circular button size */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* Arrow size */
+    color: var(--color-text-dark); /* Dark arrow color */
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.arrow-button:hover {
+    background-color: var(--color-primary-light); /* Hover effect */
+    border-color: var(--color-primary-light);
+    color: var(--color-bg-white);
+    transform: translateY(-3px); /* Subtle lift */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Right Testimonial Carousel/Item */
+.testimonial-carousel-wrapper {
+    width: 100%;
+    max-width: 45rem; /* Adjust max-width of the testimonial card */
+    position: relative; /* For absolutely positioned items if using carousel */
+    min-height: 350px; /* Ensure space for the tallest testimonial, adjust as needed */
+    display: flex; /* This will help center the initial item */
+    justify-content: center; /* Center the item initially */
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .testimonial-carousel-wrapper {
+        width: 60%; /* Allocate space for testimonial */
+        justify-content: flex-start; /* Align testimonial left within its column on desktop */
+    }
+}
+
+.testimonial-item {
+    background-color: var(--color-bg-white); /* White background */
+    border-radius: 16px; /* Rounded corners */
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+    padding: 3rem; /* Generous padding */
+    text-align: left; /* Text alignment within the card */
+    position: absolute; /* Stack items for carousel */
+    top: 0;
+   
+    height: 20px;
+    width: 100%;
+    height: auto; /* Fill parent wrapper */
+    opacity: 0; /* Hidden by default */
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out; /* Fade transition */
+    display: flex; /* Flex container for quote and author */
+    flex-direction: column; /* Stack quote and author */
+    justify-content: space-between; /* Push author to bottom */
+    box-sizing: border-box; /* Include padding in dimensions */
+    
+}
+
+.testimonial-item.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.testimonial-quote {
+    font-size: 1.75rem; /* text-3xl */
+    font-weight: 500; /* Medium weight for quotes */
+    color: var(--color-text-dark); /* Dark text for quote */
+    line-height: 1.5;
+    margin-bottom: 2rem; /* Space below quote */
+    position: relative; /* For quote icon */
+    padding-top: 1.5rem; /* Space for the absolute quote icon */
+}
+
+.quote-icon {
+    font-family: serif; /* To ensure a classic quote mark style */
+    font-size: 4rem; /* Large quote icon */
+    color: #6C47A2; /* Your purple color */
+    position: absolute;
+    top: -1.5rem; /* Adjust positioning */
+    left: 0;
+    line-height: 1; /* Prevent extra space */
+    opacity: 0.8; /* Slightly faded */
+    z-index: 0; /* Behind the text */
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between avatar and text */
+    margin-top: auto; /* Push author to the bottom of the item */
+}
+
+.author-avatar {
+    width: 60px; /* Avatar size */
+    height: 60px;
+    border-radius: 50%; /* Circular */
+    object-fit: cover; /* Cover the area */
+    border: 3px solid var(--color-alternate-green); /* Small border around avatar */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.author-name {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    color: var(--color-text-dark); /* Dark text */
+    margin-bottom: 0.25rem;
+}
+
+.author-title {
+    font-size: 0.95rem; /* text-sm */
+    color: var(--color-text-medium); /* Medium gray text */
+}
+
+/* Ensure fade-in-up works for the section */
+.testimonials-section.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.testimonials-section.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    --------------------------------------------------------------------------
+    6. About Section Styles
+    --------------------------------------------------------------------------
+*/
+.about-section {
+    background-color: var(--color-bg-white); /* bg-white */
+}
+
+.about-section .about-container {
+    max-width: 1280px; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    display: flex; /* flex */
+    flex-direction: row; /* flex-col */
+    align-items: center; /* items-center */
+    gap: 4rem; /* Increased gap from gap-16 (16 * 0.25rem = 4rem) */
+}
+
+@media (min-width: 768px) {
+    .about-container {
+        flex-direction: row; /* md:flex-row */
+    }
+}
+
+.about-slideshow-wrapper {
+    width: 100%; /* w-full */
+    display: flex; /* flex */
+    justify-content: center; /* justify-center */
+}
+
+@media (min-width: 768px) {
+    .about-slideshow-wrapper {
+        width: 50%; /* md:w-1/2 */
+        justify-content: flex-end; /* md:justify-end */
+    }
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Taller slideshow */
+    overflow: hidden;
+    border-radius: 16px; /* More pronounced rounded corners */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
+    max-width: 40rem; /* max-w-md */
+}
+
+@media (min-width: 1024px) {
+    .slideshow-container {
+        max-width: 52rem; /* lg:max-w-xl */
+    }
+}
+
+.about-section .about-slideshow-wrapper .about-slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out; /* Slower, smoother fade */
+    object-fit: cover;
+}
+
+.about-section .about-slideshow-wrapper .about-slide.active {
+    opacity: 1;
+}
+
+/* Slideshow navigation arrows */
+.about-section .about-slideshow-wrapper .prev-slide,
+.next-slide {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 18px; /* More padding */
+    color: white;
+    font-weight: bold;
+    font-size: 28px; /* Larger arrows */
+    transition: 0.6s ease;
+    border-radius: 8px; /* Rounded buttons */
+    user-select: none;
+    background-color: transparent;
+    z-index: 10;
+    opacity: 0;
+}
+
+.next-slide {
+    right: 15px; /* Slightly offset from edge */
+}
+
+.prev-slide {
+    left: 15px; /* Slightly offset from edge */
+}
+
+.prev-slide:hover,
+.next-slide:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker on hover */
+    opacity: 100;
+}
+
+/* Slideshow dots */
+.slideshow-dots {
+    text-align: center;
+    position: absolute;
+    bottom: 15px; /* Slightly higher from bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.2); /* Subtle background for dots */
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 14px; /* Larger dots */
+    width: 14px;
+    margin: 0 5px; /* More margin */
+    background-color: rgba(255, 255, 255, 0.6); /* Lighter default dot */
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease, transform 0.2s ease;
+}
+
+.dot.active,
+.dot:hover {
+    background-color: var(--color-alternate-green); /* Light green when active/hover */
+    transform: scale(1.2); /* Slight scale on active/hover */
+}
+
+.about-text-content {
+    width: 100%; /* default full width */
+    text-align: center; /* text-center */
+}
+
+@media (min-width: 768px) {
+    .about-text-content {
+        width: 50%; /* md:w-1/2 */
+        text-align: left; /* md:text-left */
+    }
+}
+/* Add/Modify this section in your style.css */
+
+/* Ensure the parent .about-text-content can contain absolutely positioned children */
+.about-text-content {
+    width: 100%; /* default full width */
+    text-align: center; /* text-center */
+    position: relative; /* Add this line */
+    min-height: 400px; /* Give it a min-height to prevent collapse when slides change */
+    /* Remove any fade-in-up classes from here if they were globally applied to this container */
+}
+
+@media (min-width: 768px) {
+    .about-text-content {
+        width: 50%; /* md:w-1/2 */
+        text-align: left; /* md:text-left */
+    }
+}
+
+/* Styles for individual text slides */
+.about-text-slide {
+    position: absolute; /* Position slides over each other */
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0; /* Hidden by default */
+    visibility: hidden; /* Also hide from screen readers when not active */
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out, transform 0.8s ease-in-out; /* Smooth transition */
+    transform: translateY(20px); /* Initial slight offset for fade-in effect */
+    display: flex; /* Use flex to align content within the slide */
+    flex-direction: column; /* Stack content vertically */
+    /* Adjust padding if needed based on desired spacing from the edges of the container */
+    padding-bottom: 2rem; /* Add some padding at the bottom for content like buttons */
+    box-sizing: border-box; /* Ensure padding is included in width/height */
+}
+
+.about-text-slide.active {
+    opacity: 1; /* Visible when active */
+    visibility: visible; /* Make visible */
+    transform: translateY(0); /* Return to original position */
+}
+
+/* Adjustments for content within text slides */
+.about-text-slide .about-title,
+.about-text-slide .about-description,
+.about-text-slide .about-mission-heading, /* If you kept these in individual slides */
+.about-text-slide .about-mission-text,
+.about-text-slide .about-vision-heading,
+.about-text-slide .about-vision-text,
+.about-text-slide .about-button {
+    /* Remove individual fade-in-up properties from these if they existed,
+       the parent .about-text-slide.active transition handles the fade. */
+    opacity: 1; /* Ensure these are always opaque within an active slide */
+    transform: translateY(0); /* Ensure no individual transform from old animations */
+    transition: none; /* Disable individual transitions for content */
+}
+
+/* Example: Ensure spacing is correct for elements within each text slide */
+.about-section .about-slideshow-wrapper .about-text-slide .about-title {
+    margin-bottom: 1.5rem; /* Adjust as needed */
+    font-size: 1opx;
+}
+
+.about-section .about-slideshow-wrapper .about-text-slide p {
+    margin-bottom: 1rem; /* Consistent spacing for paragraphs */
+    font-size: 25px;
+}
+
+.about-text-slide .about-button {
+    margin-top: 2rem; /* Space above the button */
+    align-self: center; /* Center the button within the flex column */
+}
+
+@media (min-width: 768px) {
+    .about-text-slide .about-button {
+        align-self: flex-start; /* Left align button on desktop */
+    }
+}
+
+.about-button {
+    display: inline-block; /* inline-block */
+    margin-top: 2.5rem; /* mt-10 */
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary-default)); /* bg-gradient-to-r from-green-700 to-green-600 */
+    color: var(--color-bg-white); /* text-white */
+    padding: 1rem 2.5rem; /* px-10 py-4 */
+    border-radius: 9999px; /* rounded-full */
+    font-weight: 600; /* font-semibold */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* duration-300 transform */
+    text-decoration: none; /* Remove underline */
+}
+
+.about-button:hover {
+    background: linear-gradient(to right, var(--color-primary-default), var(--color-primary-light)); /* hover:from-green-600 hover:to-green-500 */
+    transform: scale(1.05); /* hover:scale-105 */
+}
+
+
+/*
+    --------------------------------------------------------------------------
+    7. Gallery Section Styles (Carousel)
+    --------------------------------------------------------------------------
+*/
+.gallery-section {
+    background-color: var(--color-bg-light); /* bg-gray-100 */
+    
+}
+
+.gallery-container {
+    
+    max-width: 1280px; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+}
+
+.gallery-title {
+    font-size: 2.5rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    color: var(--color-text-dark); /* text-gray-900 */
+    text-align: center; /* text-center */
+    margin-bottom: 4rem; /* mb-16 */
+}
+
+@media (min-width: 768px) {
+    .gallery-title {
+        font-size: 2rem; /* md:text-4xl */
+    }
+}
+
+@media (min-width: 1024px) {
+    .gallery-title {
+        font-size: 2.75rem; /* lg:text-5xl */
+    }
+}
+
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden; /* Important to hide items outside view */
+    padding-bottom: 2rem; /* Space for dots/nav if added below */
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2.5rem; /* Increased gap between items */
+    /* We'll use JS for animation, not CSS transition here */
+    scroll-snap-type: none; /* Disable scroll snapping for continuous scroll */
+    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+    overflow-x: scroll; /* Changed to scroll to allow programmatic scrolling */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    padding: 0 1rem; /* Add horizontal padding to the track to prevent items from touching edges */
+}
+
+/* No scrollbar for carousel track explicitly for all browsers */
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-container .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px; /* Even more pronounced rounded corners */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    flex-shrink: 0; /* Prevent items from shrinking */
+    height: 600px; /* Fixed height for consistent look */
+    width: 400px; /* Default width (example, actual width handled by JS/responsive) */
+}
+
+/* Responsive sizing for carousel items */
+@media (max-width: 639px) { /* Extra small screens (mobile default) */
+    .gallery-item {
+        width: 95%; /* Almost full width for maximum impact */
+    }
+}
+@media (min-width: 640px) and (max-width: 767px) { /* sm breakpoint (e.g., larger phones, small tablets) */
+    .gallery-item {
+        width: calc(100% - 3rem); /* Single item, accounting for larger gap to center */
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px) { /* md breakpoint (e.g., tablets) */
+    .gallery-item {
+        width: calc(100% - 3rem); /* Single item, accounting for larger gap to center */
+    }
+}
+@media (min-width: 1024px) { /* lg and xl breakpoints (desktops) */
+    .gallery-item {
+        width: calc(50% - 1.25rem); /* 2 items per row for a larger display */
+    }
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px); /* Subtle lift effect */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+}
+
+.gallery-item-img {
+    width: 100%;
+    height: 100%; /* Ensure image fills the container */
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+}
+
+.gallery-item:hover .gallery-item-img {
+    transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+/* Overlay for Gallery Items */
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 50%); /* Darker gradient overlay */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align content to bottom */
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none; /* Allows clicks to pass through to the image */
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay h3 {
+    font-size: 1.6rem; /* Slightly larger title */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    transform: translateY(20px); /* Initial state for animation */
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    opacity: 0;
+}
+
+.gallery-overlay p {
+    font-size: 1rem; /* Slightly larger description text */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    transition-delay: 0.1s; /* Staggered animation */
+}
+
+.gallery-item:hover .gallery-overlay h3,
+.gallery-item:hover .gallery-overlay p {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+/*
+    ---------------------------------------
+    8. Contact Section Styles
+    ---------------------------------------
+*/
+.contact-section {
+    background-color: #5D377A; /* Dark purple from screenshot */
+    padding-top: 5rem; /* Existing padding */
+    padding-bottom: 5rem; /* Existing padding */
+}
+
+.contact-container {
+    max-width: 1280px; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    display: flex; /* Enable flexbox for side-by-side layout */
+    flex-direction: column; /* Default to column on small screens */
+    gap: 3rem; /* Space between info and form */
+    align-items: center; 
+    justify-content: center;/* Center items vertically in column layout */
+}
+
+@media (min-width: 768px) {
+    .contact-section {
+        padding-top: 8rem; /* md:py-32 */
+        padding-bottom: 8rem; /* md:py-32 */
+    }
+    .contact-container {
+        flex-direction: row; /* Row direction on medium and larger screens */
+        justify-content: space-between; /* Distribute space */
+        align-items: flex-start; /* Align items to the top */
+        gap: 5rem; /* Larger gap for desktop */
+    }
+}
+
+/* Left Contact Info Side */
+.contact-section .contact-info {
+    width: 40%;
+    padding-top: 10rem;
+    max-width: 28rem; /* Control width of the text column */
+    text-align: center; /* Center text on mobile */
+    color: var(--color-bg-white); /* White text for contrast */
+    gap: 3rem;
+}
+
+@media (min-width: 768px) {
+    .contact-info {
+        width: 40%; /* Allocate specific width */
+        text-align: left; /* Align text left on desktop */
+    }
+}
+
+.contact-title {
+    font-size: 3rem; /* Larger title */
+    font-weight: 700; /* font-bold */
+    color: var(--color-bg-white); /* White color */
+    margin-bottom: 1.5rem; /* mb-6 */
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .contact-title {
+        font-size: 3.5rem; /* md:text-5xl */
+    }
+}
+
+.contact-description {
+    font-size: 1.125rem; /* text-lg */
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    line-height: 1.7; /* leading-relaxed */
+    margin-bottom: 3rem; /* mb-12 */
+}
+
+.contact-section .contact-container .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* space-y-6 */
+    align-items: flex-start; /* Center items on mobile */
+}
+
+@media (min-width: 768px) {
+    .contact-details {
+        align-items: flex-start; /* Align items left on desktop */
+    }
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* space-x-4 */
+    font-size: 1.125rem; /* text-lg */
+    color: var(--color-bg-white); /* White text */
+    font-weight: 500;
+}
+
+.detail-item i {
+    font-size: 1.5rem; /* Larger icons */
+    color: var(--color-alternate-green); /* Your vibrant green for icons */
+}
+
+
+
+/* Right Contact Form Side */
+.contact-form-wrapper {
+    width: 100%;
+    max-width: 42rem; 
+    height: fit-content;/* Control max-width of the form card */
+}
+
+@media (min-width: 768px) {
+    .contact-form-wrapper {
+        width: 60%; /* Allocate specific width */
+    }
+}
+
+
+.contact-form-card {
+    background-color: var(--color-bg-white); /* White background for the card */
+    border-radius: 20px; /* More rounded corners */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); /* Softer shadow */
+    padding: 3rem 2.5rem; /* Increased padding */
+    position: relative; /* IMPORTANT: This makes it the positioning context for absolute children */
+    /*  */overflow: hidden; /* IMPORTANT: This will clip anything outside the card, including mispositioned circles */
+    border: none;
+    height:auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem; /* Space below header */
+    /* REMOVE position: relative; and z-index: 1; from here if they exist, as it's not needed for the circles */
+}
+
+
+.form-header h3 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    color: var(--color-text-dark); /* Dark text */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.form-header p {
+    font-size: 1.125rem; /* text-lg */
+    color: var(--color-text-medium); /* Medium gray text */
+}
+
+.decorative-circles {
+    position: absolute; /* Position relative to .contact-form-card */
+    top: 0; /* Align to the top of the card */
+    right: 0; /* Align to the right of the card */
+    width: 100px; /* Container for circles - adjust if needed */
+    height: 100px; /* Container for circles - adjust if needed */
+    z-index: 1; /* Make sure circles are above the card background but below form content */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align items to the right */
+    justify-content: flex-start; /* Align items to the top */
+    gap: 8px; /* Space between circles */
+    padding-top: 15px; /* Adjust padding to move circles down slightly */
+    padding-right: 15px; /* Adjust padding to move circles left slightly */
+}
+
+.decorative-circles div {
+    background-color: transparent; /* Make background transparent */
+    border-radius: 50%;
+    border: 1px solid var(--color-alternate-green); /* Use the purple border color */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+
+.decorative-circles div:nth-child(1) {
+    width: 20px;
+    height: 20px;
+    /* margin-right: 10px; Removed, let padding on parent handle offset */
+}
+
+.decorative-circles div:nth-child(2) {
+    width: 40px;
+    height: 40px;
+    /* margin-right: 5px; Removed */
+}
+
+.decorative-circles div:nth-child(3) {
+    width: 60px;
+    height: 60px;
+}   
+
+/* Form Styling */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Standard gap between form groups */
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) { /* Adjust breakpoint as needed for two columns */
+    .form-row {
+        flex-direction: row; /* Side-by-side on larger screens */
+        gap: 1.5rem;
+    }
+    .form-row .form-group {
+        flex: 1; /* Distribute space evenly */
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Space between label and input */
+}
+
+.form-group label {
+    font-size: 0.95rem; /* Smaller label font */
+    font-weight: 500;
+    color: var(--color-text-dark); /* Dark text for labels */
+    text-align: left; /* Align labels to the left */
+}
+
+.contact-input {
+    border: 1px solid var(--color-bg-medium); /* Light gray border */
+    border-radius: 8px; /* Slightly less rounded */
+    padding: 0.8rem 1rem; /* Adjusted padding */
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-white); /* White background for inputs */
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    width: 100%; /* Ensure full width */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.contact-input::placeholder {
+    color: var(--color-text-light); /* Lighter placeholder text */
+    opacity: 1; /* Ensure full opacity for placeholder */
+}
+
+.contact-input:focus {
+    outline: none;
+    border-color: #A27ECB; /* A lighter purple when focused */
+    box-shadow: 0 0 0 3px rgba(162, 126, 203, 0.3); /* Subtle purple shadow */
+}
+
+.message-input {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 120px; /* Ensure minimum height */
+}
+
+/* Phone Input Group (for country code and number) */
+.phone-input-group {
+    display: flex;
+    border: 1px solid var(--color-bg-medium); /* Light gray border */
+    border-radius: 8px;
+    overflow: hidden; /* Ensures borders align */
+    background-color: var(--color-bg-white);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.phone-input-group:focus-within { /* Apply focus style to the group */
+    border-color: #A27ECB;
+    box-shadow: 0 0 0 3px rgba(162, 126, 203, 0.3);
+}
+
+.country-code-select {
+    border: none; /* Remove default border */
+    background-color: transparent; /* Transparent background */
+    padding: 0.8rem 0.5rem;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    appearance: none; /* Hide default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    text-align: center;
+    border-right: 1px solid var(--color-bg-medium); /* Separator line */
+    width: 4.5rem; /* Fixed width for select */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Custom arrow for select (if desired, requires more complex CSS) */
+/* For simplicity, we'll let default browser arrow show or hide it via appearance: none; */
+/* If you want a custom dropdown arrow, you might wrap it and use pseudo-elements */
+
+.phone-number-input {
+    flex-grow: 1; /* Take remaining space */
+    border: none; /* Remove border as it's handled by parent */
+    padding: 0.8rem 1rem; /* Same padding as other inputs */
+    background-color: transparent; /* Transparent background */
+}
+
+.phone-number-input:focus {
+    outline: none; /* No outline as parent handles shadow */
+    border-color: transparent;
+    box-shadow: none;
+}
+
+
+/* Contact Button */
+.contact-button {
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary-default)); /* Darker purple for button */
+    color: var(--color-bg-white); /* White text */
+    padding: 1.1rem 2.8rem;
+    border-radius: 8px; /* Slightly less rounded, more block-like */
+    font-weight: 600;
+    font-size: 1.15rem;
+    box-shadow: 0 10px 20px -5px rgba(108, 71, 162, 0.4); /* Purple shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: block; /* Make it a block element to fill width */
+    margin-top: 1.5rem; /* Space above button */
+    margin-left: auto; /* Center button */
+    margin-right: auto; /* Center button */
+    width: auto; /* Allow width to be determined by padding */
+    max-width: 15rem; /* Limit max width of button */
+    border: none; /* Remove default button border */
+}
+
+.contact-button:hover {
+    background: linear-gradient(to right, var(--color-primary-default), var(--color-primary-light)); /* Slightly lighter purple on hover */
+    transform: translateY(-3px); /* Subtle lift */
+    box-shadow: 0 15px 30px -8px rgba(108, 71, 162, 0.5);
+}
+
+/* Fade-in animation for overall section */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*
+    --------------------------------------------------------------------------
+    9. Footer Styles
+    --------------------------------------------------------------------------
+*/
+.footer {
+    background-color: var(--color-text-dark); /* bg-gray-900 */
+    color: var(--color-bg-white); /* text-white */
+    padding-top: 2.5rem; /* py-10 */
+    padding-bottom: 2.5rem; /* py-10 */
+}
+
+.footer-container {
+    max-width: 1280px; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    text-align: center; /* text-center */
+    font-size: 0.875rem; /* text-sm */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Increased spacing */
+    margin-top: 1.25rem; /* mt-5 */
+}
+
+.social-icon {
+    color: var(--color-text-light); /* text-gray-400 */
+    transition: color 0.3s ease, transform 0.3s ease; /* duration-300 transform */
+    text-decoration: none; /* Remove underline */
+}
+
+.social-icon:hover {
+    color: var(--color-alternate-green); /* hover:text-green-300 */
+    transform: scale(1.1); /* hover:scale-110 */
+}
+
+.social-icon i {
+    font-size: 1.5rem; /* text-2xl */
+}
+
+/*
+    --------------------------------------------------------------------------
+    10. Lightbox Styles (for future use if re-enabled)
+    --------------------------------------------------------------------------
+*/
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.98); /* Near opaque overlay */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out; /* Smoother fade */
+    cursor: zoom-out; /* Indicate it's closable by clicking outside */
+}
+
+.lightbox.open {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 16px; /* Match gallery item corners */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7); /* More prominent shadow */
+    animation: zoomIn 0.4s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother animation curve */
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 25px; /* Adjusted for better spacing */
+    right: 40px; /* Adjusted for better spacing */
+    color: #fff;
+    font-size: 52px; /* Even larger close button */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6); /* More pronounced shadow to close button */
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--color-primary-light); /* Green on hover */
+    transform: rotate(90deg) scale(1.1); /* Little spin and scale on close button */
+}
+
+/*
+    --------------------------------------------------------------------------
+    11. Section Visibility Animation (Fade In Up)
+    --------------------------------------------------------------------------
+*/
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px); /* Increased initial translateY */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slower, smoother transition */
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+@media (max-width: 1080px){
+    .testimonials-section {
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+     }
+    .testimonials-section .testimonials-container {
+        /* Already flex-direction: column on mobile, so no change needed here */
+        gap:5rem; /* Slightly reduce gap between intro and carousel */
+    }
+     .testimonials-section .testimonials-container .testimonials-intro .testimonials-title {
+        font-size: 40px; /* Smaller font size for title */
+        margin-top: 0;
+        margin-bottom: 0.8rem;
+    }
+    .testimonials-section .testimonials-container .testimonials-intro p{
+        font-size: 20px;
+    }
+    .testimonials-section .testimonials-container .testimonial-carousel-wrapper {
+        max-width: 100%; /* Ensure carousel wrapper takes full width */
+        min-height: 320px; /* Adjust min-height as text might reflow more vertically */
+        width: 500px;                   /* You might need to fine-tune this value after testing. */
+        padding: 0 0.5rem; /* Small horizontal padding inside wrapper if content touches edges */
+    }
+      .testimonials-section .testimonials-container .testimonial-item {
+        padding: 2rem 1.5rem; /* Reduce padding inside the white card */
+        /* Ensure top: 0; left: 0; width: 100%; height: auto; are already in main CSS */
+        top: 0; /* Ensuring top position is explicitly set */
+        left: 0; /* Ensuring left position is explicitly set */
+        width: 100%; /* Important: ensure it fits within the 100% max-width of carousel-wrapper */
+        height: auto; /* Allow height to adjust to content */
+    }
+    .testimonials-section .testimonials-container  .testimonial-quote {
+        font-size: 20px; /* Smaller font size for the main quote */
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        padding-top: 1rem; /* Adjust padding for the new quote icon size */
+    }
+     .testimonials-section .testimonials-container  .author-name {
+        font-size: 1.5rem; /* Smaller font size for name */
+    }
+
+   .testimonials-section .testimonials-container  .author-title {
+        font-size: 1rem; /* Smaller font size for title */
+    }
+
+     .contact-section {
+        padding: 2rem 1rem; 
+        margin-top: 0;/* Reduced overall padding for tighter mobile layout */
+    }
+
+   .contact-section .contact-container {
+        /* Already flex-direction: column on mobile, no change needed here */
+        gap: 2rem; /* Slightly reduce gap between info and form */
+    }
+
+    /* Left Contact Info Side */
+    .contact-section .contact-container .contact-info {
+        max-width: 400px;
+        width: 100%; /* Ensure it takes full width of its parent */
+        padding-top: 0.5rem; /* Adjusted for smaller screens, if you want space from top of section */
+        text-align: center; /* Ensure consistent text alignment */
+    }
+    .contact-section .contact-container .contact-info .contact-description{
+        margin-bottom:1.5rem;
+    }
+
+    .contact-section .contact-container .contact-title {
+        font-size: 25px; /* Smaller font size for title */
+        margin-bottom: 1rem;
+        ;
+    }
+
+   .contact-section .contact-container .contact-description {
+        font-size: 18px; /* Smaller font size for description */
+        margin-bottom: 1rem;
+        text-align: justify;
+    }
+
+    .contact-section .contact-container .contact-details {
+        gap: 0.5rem; /* Slightly reduce gap between detail items */
+        display: flex; 
+       align-items:flex-start ;
+
+        
+    }
+
+    .contact-section .contact-container .contact-details .detail-item {
+        font-size: 16px; /* Smaller font for contact details */
+       
+        
+
+    }
+
+   .contact-section .contact-container .contact-details .detail-item i {
+        font-size: 1rem; /* Smaller icons for contact details */
+    }
+
+    /* Right Contact Form Side */
+    .contact-section .contact-container .contact-form-wrapper {
+        max-width: 100%; 
+        /* Ensure it takes full width of its parent */
+    }
+
+    .contact-section .contact-container .contact-form-card {
+        padding: 1rem 1.5rem; /* Reduced internal padding for the card */
+        height: auto; /* IMPORTANT: Allow height to adjust to content on small screens */
+        min-height: 500px; /* Optional: Set a minimum height to prevent it from being too short */
+                           /* You might need to adjust this `min-height` based on your content */
+    }
+     
+   .contact-section .contact-container .form-header h3 {
+        font-size: 20px; /* Smaller font size for form header title */
+        margin-bottom: 0.25rem;
+        line-height: 1.5rem;
+    }
+
+   .contact-section .contact-container .form-header p {
+        font-size: 16px; /* Smaller font size for form header description */
+    }
+
+   .contact-section .contact-container .decorative-circles {
+    display: none;
+    }
+   
+
+   .contact-section .contact-container .contact-form {
+        gap: 0.5rem; /* Reduce gap between form groups */
+    }
+
+    .contact-section .contact-container .form-row {
+       /* Ensure form-rows always stack on mobile */
+        gap: 1rem; /* Reduce gap within form-rows */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group label {
+        font-size: 16px; /* Smaller font for labels */
+        font-weight: 400;
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .contact-input {
+        padding: 0.5rem 0.6rem; /* Slightly reduced input padding */
+        font-size: 15px; /* Smaller font size for input text */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .message-input {
+        min-height: 100px; /* Slightly reduce min-height for textarea */
+    }
+
+     .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .country-code-select {
+        padding: 0.7rem 0.4rem; /* Adjusted padding */
+        font-size: 0.9rem; /* Smaller font */
+        width: 4rem; /* Adjusted width */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .phone-number-input {
+        padding: 0.7rem 0.8rem; /* Consistent padding */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card  .contact-button {
+        padding: 15px; /* Smaller button padding */
+        font-size: 15px; /* Smaller button font size */
+        max-width: 12rem; /* Reduced max-width for button */
+        margin-top: 1rem; /* Reduce space above button */
+    }
+
+
+}
+
+@media (min-width: 768px) {
+    .about-section,
+    .gallery-section,
+    .contact-section {
+        padding-top: 8rem; /* md:py-32 */
+        padding-bottom: 8rem; /* md:py-32 */
+    }
+
+    .nav-links {
+        display: flex; /* Show on medium and larger screens */
+    }
+
+    .mobile-menu-button {
+        display: none; /* Hide on medium and larger screens */
+    }
+
+   
+}
+
+
+@media  (max-width: 785px){
+    .navbar .logo{
+        gap:0.1rem;
+    }
+    .hero-section {
+        min-height: 90vh; 
+        margin-top: 0;
+        width: 100%; /* Adjusted for smaller screens */
+        padding-top: 0;/* Adjusted for smaller screens */
+        display: flex;
+        justify-content: center;
+    }
+    .hero-section .hero-content .hero-title span{
+        font-size: 30px;
+        letter-spacing: 1px;
+    }
+    .hero-section .hero-content p {
+    font-size: 20px !important;
+    width: 100%;
+    max-width: 600px; /* Adjust this as needed */
+    text-align: center;
+    margin: 5px auto;
+    margin-bottom: 25px;
+    /* ADD THIS LINE: */
+    box-sizing: border-box;
+    }
+    
+    
+     .testimonials-section {
+        height: 70vh;
+     }
+    .testimonials-section .testimonials-container {
+        /* Already flex-direction: column on mobile, so no change needed here */
+        gap:3rem; /* Slightly reduce gap between intro and carousel */
+    }
+     .testimonials-section .testimonials-container .testimonials-intro .testimonials-title {
+        font-size: 35px; /* Smaller font size for title */
+        margin-top: 0;
+        margin-bottom: 0.8rem;
+    }
+    .testimonials-section .testimonials-container .testimonials-intro p{
+        font-size: 20px;
+    }
+    .testimonials-section .testimonials-container .testimonial-carousel-wrapper {
+        max-width: 100%; /* Ensure carousel wrapper takes full width */
+        min-height: 320px; /* Adjust min-height as text might reflow more vertically */
+                            /* You might need to fine-tune this value after testing. */
+        padding: 0 0.5rem; /* Small horizontal padding inside wrapper if content touches edges */
+    }
+      .testimonials-section .testimonials-container .testimonial-item {
+        padding: 2rem 1.5rem; /* Reduce padding inside the white card */
+        /* Ensure top: 0; left: 0; width: 100%; height: auto; are already in main CSS */
+        top: 0; /* Ensuring top position is explicitly set */
+        left: 0; /* Ensuring left position is explicitly set */
+        width: 100%; /* Important: ensure it fits within the 100% max-width of carousel-wrapper */
+        height: auto; /* Allow height to adjust to content */
+    }
+    .testimonials-section .testimonials-container  .testimonial-quote {
+        font-size: 20px; /* Smaller font size for the main quote */
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        padding-top: 1rem; /* Adjust padding for the new quote icon size */
+    }
+     .testimonials-section .testimonials-container  .author-name {
+        font-size: 1.5rem; /* Smaller font size for name */
+    }
+
+   .testimonials-section .testimonials-container  .author-title {
+        font-size: 1rem; /* Smaller font size for title */
+    }
+
+     .contact-section {
+        padding: 2rem 1rem; 
+        margin-top: 0;/* Reduced overall padding for tighter mobile layout */
+    }
+
+   .contact-section .contact-container {
+        /* Already flex-direction: column on mobile, no change needed here */
+        gap: 2rem; /* Slightly reduce gap between info and form */
+    }
+
+    /* Left Contact Info Side */
+    .contact-section .contact-container .contact-info {
+        max-width: 400px;
+        width: 100%; /* Ensure it takes full width of its parent */
+        padding-top: 0.5rem; /* Adjusted for smaller screens, if you want space from top of section */
+        text-align: center; /* Ensure consistent text alignment */
+    }
+    .contact-section .contact-container .contact-info .contact-description{
+        margin-bottom:1.5rem;
+    }
+
+    .contact-section .contact-container .contact-title {
+        font-size: 25px; /* Smaller font size for title */
+        margin-bottom: 1rem;
+        ;
+    }
+
+   .contact-section .contact-container .contact-description {
+        font-size: 18px; /* Smaller font size for description */
+        margin-bottom: 1rem;
+        text-align: justify;
+    }
+
+    .contact-section .contact-container .contact-details {
+        gap: 0.5rem; /* Slightly reduce gap between detail items */
+        display: flex; 
+       align-items:flex-start ;
+
+        
+    }
+
+    .contact-section .contact-container .contact-details .detail-item {
+        font-size: 16px; /* Smaller font for contact details */
+       
+        
+
+    }
+
+   .contact-section .contact-container .contact-details .detail-item i {
+        font-size: 1rem; /* Smaller icons for contact details */
+    }
+
+    /* Right Contact Form Side */
+    .contact-section .contact-container .contact-form-wrapper {
+        max-width: 100%; 
+        /* Ensure it takes full width of its parent */
+    }
+
+    .contact-section .contact-container .contact-form-card {
+        padding: 1rem 1.5rem; /* Reduced internal padding for the card */
+        height: auto; /* IMPORTANT: Allow height to adjust to content on small screens */
+        min-height: 500px; /* Optional: Set a minimum height to prevent it from being too short */
+                           /* You might need to adjust this `min-height` based on your content */
+    }
+
+   .contact-section .contact-container .form-header h3 {
+        font-size: 20px; /* Smaller font size for form header title */
+        margin-bottom: 0.25rem;
+        line-height: 1.5rem;
+    }
+
+   .contact-section .contact-container .form-header p {
+        font-size: 16px; /* Smaller font size for form header description */
+    }
+
+   .contact-section .contact-container .decorative-circles {
+    display: none;
+    }
+   
+
+   .contact-section .contact-container .contact-form {
+        gap: 0.5rem; /* Reduce gap between form groups */
+    }
+
+    .contact-section .contact-container .form-row {
+       /* Ensure form-rows always stack on mobile */
+        gap: 1rem; /* Reduce gap within form-rows */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group label {
+        font-size: 16px; /* Smaller font for labels */
+        font-weight: 400;
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .contact-input {
+        padding: 0.5rem 0.6rem; /* Slightly reduced input padding */
+        font-size: 15px; /* Smaller font size for input text */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .message-input {
+        min-height: 100px; /* Slightly reduce min-height for textarea */
+    }
+
+     .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .country-code-select {
+        padding: 0.7rem 0.4rem; /* Adjusted padding */
+        font-size: 0.9rem; /* Smaller font */
+        width: 4rem; /* Adjusted width */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .phone-number-input {
+        padding: 0.7rem 0.8rem; /* Consistent padding */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card  .contact-button {
+        padding: 15px; /* Smaller button padding */
+        font-size: 15px; /* Smaller button font size */
+        max-width: 12rem; /* Reduced max-width for button */
+        margin-top: 1rem; /* Reduce space above button */
+    }
+
+}
+
+
+
+
+
+@media (max-width: 650px) {
+  
+    .header .navbar .logo-text{
+        font-size: 20px;
+    }
+    .header {
+        padding: 5px;
+        width: 100%;
+        gap: 0;
+        
+    }
+    .header .navbar {
+        padding-left: 0.4rem; /* px-2 */
+        padding-right: 0.5rem; /* px-2 */
+        margin: 0;
+    }
+    .header .navbar .logo-img {
+        height: 40px;      /* Smaller height for mobile */
+        width: auto;
+        max-width: 36px;   /* Optional: limit max size */
+        object-fit: contain;
+        display: block;
+    }
+    .header .navbar .logo{
+        gap: 0.25;
+        margin: 0;
+        padding: 0;
+    }
+    .hero-section {
+        min-height: 90vh; 
+        margin-top: 0;
+         /* Adjusted for smaller screens */
+        padding-top: 0;/* Adjusted for smaller screens */
+        display: flex;
+        justify-content: center;
+    }
+  /*    .hero-section .hero-content .hero-title {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }  */
+    .hero-section .hero-content .hero-title span{
+        font-size: 30px;
+        /* width: 50%; */
+        letter-spacing: 1px;
+    }
+    .main-content .hero-section  .hero-content p {
+    font-size: 16px !important;
+    width: 100%;
+    max-width: 400px; /* Adjust this as needed */
+    text-align: center;
+    margin: 5px auto;
+    margin-bottom: 15px;
+    
+    /* ADD THIS LINE: */
+    box-sizing: border-box;
+    }
+    .hero-section .hero-content .hero-button{
+        width: 150px;
+        padding: 10px;
+        font-size: 0.8rem; /* Adjusted for smaller screens */
+    }
+    .about-section {
+        padding-top: 2rem; /* Reduced padding for smaller screens */
+        padding-bottom: 3rem; /* Reduced padding for smaller screens */
+        min-height: fit-content;
+        display: flex;
+        flex-direction: column;
+        width: 100% !important;
+        
+    
+    }
+    .about-section .about-container {
+        padding-left: 1rem; /* Reduced padding for smaller screens */
+        padding-right: 1rem; /* Reduced padding for smaller screens */
+        min-height: 90vh;
+       width: 100%;
+       /* background-color: #34D399; */
+       display: flex;
+       flex-direction: column;
+        
+        align-items: center;
+    }
+   
+     .about-section .about-container .about-slideshow-wrapper .slideshow-container {
+        height:300px; /* Reduced height for smaller screens */
+       /*  background-color: #34D399; */
+        width: 100%;
+        max-width: 350px;
+        margin: auto;
+        
+    }
+      .about-section .about-container   .about-text-content {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+  }
+    .about-section .about-container .about-slideshow-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+       
+        /* Reduced height for smaller screens */
+    }
+     .about-section .about-container .about-slideshow-wrapper img{
+        
+        height: 100%;
+    }
+   
+     .about-text-content .about-text-slide .about-title{
+        margin-bottom: 0.5rem; /* Space below the title */
+        margin-top: 0.25rem; /* Space above the title */
+        font-size: 30px; /* Adjusted for smaller screens */
+    }
+     .about-text-content .about-text-slide p {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify; /* okay if you want justified */
+    max-width: 350px;
+    }
+
+    .about-text-content .about-text-slide .about-button {
+        margin-top: 0.5rem; /* Space above the button */
+        align-self: center; /* Center the button within the flex column */
+        padding: 15px;
+        font-size: 16px;
+    }
+    .gallery-section {
+        padding-top: 1rem; /* Reduced padding for smaller screens */
+        padding-bottom: 1rem;
+         /* Reduced padding for smaller screens */
+    }
+    .gallery-section .gallery-container .gallery-title{
+        font-size: 25px;
+        margin-bottom: 1rem;
+    }
+    .gallery-section .gallery-container .carousel-wrapper{
+        height: 630px; /* Reduced height for smaller screens */
+    }
+    .gallery-section .gallery-container .gallery-item {
+       height: fit-content;
+    }
+    /* .gallery-section .carousel-wrapper .carousel-track {
+        height: fit-content; /* Reduced height for smaller screens 
+        
+    } */
+    .gallery-section .gallery-container .carousel-wrapper .gallery-item-img{
+        height: 600px; /* Reduced height for smaller screens */
+        width: auto;
+    }
+    .gallery-section .gallery-container .carousel-wrapper .gallery-item .gallery-overlay h3{
+        font-size: 20px;
+    }
+    .gallery-section .gallery-container .carousel-wrapper .gallery-item .gallery-overlay p{
+        font-size: 16px;
+        line-height: 1.3rem;
+    }
+    
+      .testimonials-section {
+        margin-top: 0;
+        padding: 0;
+        height: 90vh;
+        /* Adjust overall padding for smaller screens */
+    }
+
+    .testimonials-section .testimonials-container {
+        /* Already flex-direction: column on mobile, so no change needed here */
+        gap: 2rem; /* Slightly reduce gap between intro and carousel */
+    }
+
+    .testimonials-section .testimonials-intro {
+        max-width: 100%; /* Ensure it takes full width, letting padding on container handle spacing */
+    }
+
+    .testimonials-section .testimonials-container .testimonials-intro .testimonials-title {
+        font-size: 25px; /* Smaller font size for title */
+        margin-top: 0;
+        margin-bottom: 0.8rem;
+    }
+    .testimonials-section .testimonials-container .testimonials-intro p{
+        font-size: 16px;
+    }
+   
+
+    .testimonial-navigation {
+        gap: 1rem;
+        padding: 0; /* Slightly reduce gap between arrow buttons */
+    }
+
+    .testimonials-section .testimonials-container .arrow-button {
+        width: 45px; /* Slightly smaller button size */
+        height: 45px;
+        font-size: 1.3rem; /* Slightly smaller arrow icon */
+       /*  width: 30px; 
+        height: 30px; */
+    }
+
+    .testimonials-section .testimonials-container .testimonial-carousel-wrapper {
+        max-width: 100%; /* Ensure carousel wrapper takes full width */
+        min-height: 300px; /* Adjust min-height as text might reflow more vertically */
+        width: 350px;                    /* You might need to fine-tune this value after testing. */
+        padding: 0 0.5rem; /* Small horizontal padding inside wrapper if content touches edges */
+    }
+
+    .testimonials-section .testimonials-container .testimonial-item {
+        padding: 2rem 1.5rem; /* Reduce padding inside the white card */
+        /* Ensure top: 0; left: 0; width: 100%; height: auto; are already in main CSS */
+        top: 0; /* Ensuring top position is explicitly set */
+        left: 0; /* Ensuring left position is explicitly set */
+        width: 100%; /* Important: ensure it fits within the 100% max-width of carousel-wrapper */
+        height: auto; /* Allow height to adjust to content */
+    }
+
+    .testimonials-section .testimonials-container  .testimonial-quote {
+        font-size: 18px; /* Smaller font size for the main quote */
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        padding-top: 1rem; /* Adjust padding for the new quote icon size */
+    }
+
+    .testimonials-section .testimonials-container .quote-icon {
+        font-size: 2rem; /* Smaller quote icon */
+        top: -1rem; /* Adjust positioning based on new font size */
+    }
+
+    .testimonials-section .testimonials-container .testimonial-author {
+        gap: 0.8rem; /* Slightly reduce gap in author info */
+    }
+
+    .testimonials-section .testimonials-container .author-avatar {
+        width: 50px; /* Slightly smaller avatar */
+        height: 50px;
+    }
+
+   .testimonials-section .testimonials-container  .author-name {
+        font-size: 1rem; /* Smaller font size for name */
+    }
+
+   .testimonials-section .testimonials-container  .author-title {
+        font-size: 0.85rem; /* Smaller font size for title */
+    }
+
+    .contact-section {
+        padding: 2rem 1rem; 
+        margin-top: 0;/* Reduced overall padding for tighter mobile layout */
+    }
+
+   .contact-section .contact-container {
+        /* Already flex-direction: column on mobile, no change needed here */
+        gap: 2rem; /* Slightly reduce gap between info and form */
+    }
+
+    /* Left Contact Info Side */
+    .contact-section .contact-container .contact-info {
+        max-width: 350px;
+        width: 100%; /* Ensure it takes full width of its parent */
+        padding-top: 0.5rem; /* Adjusted for smaller screens, if you want space from top of section */
+        text-align: center; /* Ensure consistent text alignment */
+    }
+    .contact-section .contact-container .contact-info .contact-description{
+        margin-bottom:1.5rem;
+    }
+
+    .contact-section .contact-container .contact-title {
+        font-size: 25px; /* Smaller font size for title */
+        margin-bottom: 1rem;
+        ;
+    }
+
+   .contact-section .contact-container .contact-description {
+        font-size: 18px; /* Smaller font size for description */
+        margin-bottom: 1rem;
+        text-align: justify;
+    }
+
+    .contact-section .contact-container .contact-details {
+        gap: 0.5rem; /* Slightly reduce gap between detail items */
+        display: flex; 
+       align-items:flex-start ;
+
+        
+    }
+
+    .contact-section .contact-container .contact-details .detail-item {
+        font-size: 16px; /* Smaller font for contact details */
+       
+        
+
+    }
+
+   .contact-section .contact-container .contact-details .detail-item i {
+        font-size: 1rem; /* Smaller icons for contact details */
+    }
+
+    /* Right Contact Form Side */
+    .contact-section .contact-container .contact-form-wrapper {
+        max-width: 100%; 
+        /* Ensure it takes full width of its parent */
+    }
+
+    .contact-section .contact-container .contact-form-card {
+        padding: 1rem 1.5rem; /* Reduced internal padding for the card */
+        height: auto; /* IMPORTANT: Allow height to adjust to content on small screens */
+        min-height: 500px; /* Optional: Set a minimum height to prevent it from being too short */
+                           /* You might need to adjust this `min-height` based on your content */
+    }
+
+   .contact-section .contact-container .form-header h3 {
+        font-size: 20px; /* Smaller font size for form header title */
+        margin-bottom: 0.25rem;
+        line-height: 1.5rem;
+    }
+
+   .contact-section .contact-container .form-header p {
+        font-size: 16px; /* Smaller font size for form header description */
+    }
+
+   .contact-section .contact-container .decorative-circles {
+    display: none;
+    }
+   
+
+   .contact-section .contact-container .contact-form {
+        gap: 0.5rem; /* Reduce gap between form groups */
+    }
+
+    .contact-section .contact-container .form-row {
+       /* Ensure form-rows always stack on mobile */
+        gap: 1rem; /* Reduce gap within form-rows */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group label {
+        font-size: 16px; /* Smaller font for labels */
+        font-weight: 400;
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .contact-input {
+        padding: 0.5rem 0.6rem; /* Slightly reduced input padding */
+        font-size: 15px; /* Smaller font size for input text */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .message-input {
+        min-height: 100px; /* Slightly reduce min-height for textarea */
+    }
+
+     .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .country-code-select {
+        padding: 0.7rem 0.4rem; /* Adjusted padding */
+        font-size: 0.9rem; /* Smaller font */
+        width: 4rem; /* Adjusted width */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .phone-number-input {
+        padding: 0.7rem 0.8rem; /* Consistent padding */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card  .contact-button {
+        padding: 15px; /* Smaller button padding */
+        font-size: 15px; /* Smaller button font size */
+        max-width: 12rem; /* Reduced max-width for button */
+        margin-top: 1rem; /* Reduce space above button */
+    }
+    footer{
+        padding: 0;
+        height: 40px;
+    }
+    footer .footer-container{
+        margin-top: 0;
+       padding: auto; /* py-10 */
+       
+
+    }
+    footer .footer-container .social-icon i {
+       font-size: 20px;
+    }
+}@media (max-width: 380px) {
+  
+    .header .navbar .logo-text{
+        font-size: 20px;
+    }
+    .header {
+        padding: 5px;
+        width: 100%;
+        gap: 0;
+        
+    }
+    .header .navbar {
+        padding-left: 0.4rem; /* px-2 */
+        padding-right: 0.5rem; /* px-2 */
+        margin: 0;
+    }
+    .header .navbar .logo-img {
+        height: 40px;      /* Smaller height for mobile */
+        width: auto;
+        max-width: 36px;   /* Optional: limit max size */
+        object-fit: contain;
+        display: block;
+    }
+    .header .navbar .logo{
+        gap: 0.25;
+        margin: 0;
+        padding: 0;
+    }
+    .hero-section {
+        min-height: 90vh; 
+        margin-top: 0;
+         /* Adjusted for smaller screens */
+        padding-top: 0;/* Adjusted for smaller screens */
+        display: flex;
+        justify-content: center;
+    }
+  /*    .hero-section .hero-content .hero-title {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }  */
+    .hero-section .hero-content .hero-title span{
+        font-size: 25px;
+        /* width: 50%; */
+        letter-spacing: 1px;
+    }
+    .main-content .hero-section  .hero-content p {
+    font-size: 14px !important;
+    width: 100%;
+    max-width: 400px; /* Adjust this as needed */
+    text-align: center;
+    margin: 5px auto;
+    margin-bottom: 15px;
+    
+    /* ADD THIS LINE: */
+    box-sizing: border-box;
+    }
+    .hero-section .hero-content .hero-button{
+        width: 150px;
+        padding: 10px;
+        font-size: 0.8rem; /* Adjusted for smaller screens */
+    }
+    .about-section {
+        padding-top: 2rem; /* Reduced padding for smaller screens */
+        padding-bottom: 3rem; /* Reduced padding for smaller screens */
+        min-height: fit-content;
+        display: flex;
+        flex-direction: column;
+        width: 100% !important;
+        
+    
+    }
+    .about-section .about-container {
+        padding-left: 1rem; /* Reduced padding for smaller screens */
+        padding-right: 1rem; /* Reduced padding for smaller screens */
+        min-height: 90vh;
+       width: 100%;
+       /* background-color: #34D399; */
+       display: flex;
+       flex-direction: column;
+        
+        align-items: center;
+    }
+   
+     .about-section .about-container .about-slideshow-wrapper .slideshow-container {
+        height:250px; /* Reduced height for smaller screens */
+       /*  background-color: #34D399; */
+        width: 100%;
+        max-width: 260px;
+        margin: auto;
+        
+    }
+      .about-section .about-container   .about-text-content {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+  }
+    .about-section .about-container .about-slideshow-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+       
+        /* Reduced height for smaller screens */
+    }
+     .about-section .about-container .about-slideshow-wrapper img{
+        
+        height: 100%;
+    }
+   
+     .about-text-content .about-text-slide .about-title{
+        margin-bottom: 0.5rem; /* Space below the title */
+        margin-top: 0.25rem; /* Space above the title */
+        font-size: 20px; /* Adjusted for smaller screens */
+    }
+     .about-text-content .about-text-slide p {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify; /* okay if you want justified */
+    max-width: 270px;
+    }
+
+    .about-text-content .about-text-slide .about-button {
+        margin-top: 0.5rem; /* Space above the button */
+        align-self: center; /* Center the button within the flex column */
+        padding: 15px;
+        font-size: 16px;
+    }
+    .gallery-section {
+        padding-top: 1rem; /* Reduced padding for smaller screens */
+        padding-bottom: 1rem;
+         /* Reduced padding for smaller screens */
+    }
+    .gallery-section .gallery-container .gallery-title{
+        font-size: 20px;
+        margin-bottom: 1rem;
+    }
+    .gallery-section .gallery-container .carousel-wrapper{
+        height: 600px; /* Reduced height for smaller screens */
+    }
+    .gallery-section .gallery-container .gallery-item {
+       height: fit-content;
+    }
+    /* .gallery-section .carousel-wrapper .carousel-track {
+        height: fit-content; /* Reduced height for smaller screens 
+        
+    } */
+    .gallery-section .gallery-container .carousel-wrapper .gallery-item-img{
+        height: 600px; /* Reduced height for smaller screens */
+        width: auto;
+    }
+    .gallery-section .gallery-container .carousel-wrapper .gallery-item .gallery-overlay h3{
+        font-size: 20px;
+    }
+    .gallery-section .gallery-container .carousel-wrapper .gallery-item .gallery-overlay p{
+        font-size: 16px;
+        line-height: 1.3rem;
+    }
+    
+      .testimonials-section {
+        margin-top: 0;
+        padding: 0;
+        height: 90vh;
+        /* Adjust overall padding for smaller screens */
+    }
+
+    .testimonials-section .testimonials-container {
+        /* Already flex-direction: column on mobile, so no change needed here */
+        gap: 2rem; /* Slightly reduce gap between intro and carousel */
+    }
+
+    .testimonials-section .testimonials-intro {
+        max-width: 270px;
+        width: 100%; /* Ensure it takes full width, letting padding on container handle spacing */
+    }
+
+    .testimonials-section .testimonials-container .testimonials-intro .testimonials-title {
+        font-size: 20px; /* Smaller font size for title */
+        margin-top: 0;
+        margin-bottom: 0.8rem;
+    }
+    .testimonials-section .testimonials-container .testimonials-intro p{
+        font-size: 15px;
+    }
+   
+
+    .testimonial-navigation {
+        gap: 1rem;
+        padding: 0; /* Slightly reduce gap between arrow buttons */
+    }
+
+    .testimonials-section .testimonials-container .arrow-button {
+        width: 45px; /* Slightly smaller button size */
+        height: 45px;
+        font-size: 1.3rem; /* Slightly smaller arrow icon */
+       /*  width: 30px; 
+        height: 30px; */
+    }
+
+    .testimonials-section .testimonials-container .testimonial-carousel-wrapper {
+        max-width: 100%; /* Ensure carousel wrapper takes full width */
+        min-height: 2500px; /* Adjust min-height as text might reflow more vertically */
+        width: 300px;                    /* You might need to fine-tune this value after testing. */
+        padding: 0 0.5rem; /* Small horizontal padding inside wrapper if content touches edges */
+    }
+
+    .testimonials-section .testimonials-container .testimonial-item {
+        padding: 2rem 1.5rem; /* Reduce padding inside the white card */
+        /* Ensure top: 0; left: 0; width: 100%; height: auto; are already in main CSS */
+        top: 0; /* Ensuring top position is explicitly set */
+        left: 0; /* Ensuring left position is explicitly set */
+        width: 100%; /* Important: ensure it fits within the 100% max-width of carousel-wrapper */
+        height: auto; /* Allow height to adjust to content */
+    }
+
+    .testimonials-section .testimonials-container  .testimonial-quote {
+        font-size: 15px; /* Smaller font size for the main quote */
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        padding-top: 1rem; /* Adjust padding for the new quote icon size */
+    }
+
+    .testimonials-section .testimonials-container .quote-icon {
+        font-size: 2rem; /* Smaller quote icon */
+        top: -1rem; /* Adjust positioning based on new font size */
+    }
+
+    .testimonials-section .testimonials-container .testimonial-author {
+        gap: 0.8rem; /* Slightly reduce gap in author info */
+    }
+
+    .testimonials-section .testimonials-container .author-avatar {
+        width: 40px; /* Slightly smaller avatar */
+        height: 40px;
+    }
+
+   .testimonials-section .testimonials-container  .author-name {
+        font-size: 1rem; /* Smaller font size for name */
+    }
+
+   .testimonials-section .testimonials-container  .author-title {
+        font-size: 0.85rem; /* Smaller font size for title */
+    }
+
+    .contact-section {
+        padding: 2rem 1rem; 
+        margin-top: 0;/* Reduced overall padding for tighter mobile layout */
+    }
+
+   .contact-section .contact-container {
+        /* Already flex-direction: column on mobile, no change needed here */
+        gap: 2rem; /* Slightly reduce gap between info and form */
+    }
+
+    /* Left Contact Info Side */
+    .contact-section .contact-container .contact-info {
+        max-width: 300px;
+        width: 100%; /* Ensure it takes full width of its parent */
+        padding-top: 0.5rem; /* Adjusted for smaller screens, if you want space from top of section */
+        text-align: center; /* Ensure consistent text alignment */
+    }
+    .contact-section .contact-container .contact-info .contact-description{
+        margin-bottom:1.5rem;
+    }
+
+    .contact-section .contact-container .contact-title {
+        font-size: 20px; /* Smaller font size for title */
+        margin-bottom: 1rem;
+        ;
+    }
+
+   .contact-section .contact-container .contact-description {
+        font-size: 15px; /* Smaller font size for description */
+        margin-bottom: 1rem;
+        text-align: justify;
+    }
+
+    .contact-section .contact-container .contact-details {
+        gap: 0.5rem; /* Slightly reduce gap between detail items */
+        display: flex; 
+       align-items:flex-start ;
+
+        
+    }
+
+    .contact-section .contact-container .contact-details .detail-item {
+        font-size: 15px; /* Smaller font for contact details */
+       
+        
+
+    }
+
+   .contact-section .contact-container .contact-details .detail-item i {
+        font-size: 1rem; /* Smaller icons for contact details */
+    }
+
+    /* Right Contact Form Side */
+    .contact-section .contact-container .contact-form-wrapper {
+        max-width: 100%; 
+        /* Ensure it takes full width of its parent */
+    }
+
+    .contact-section .contact-container .contact-form-card {
+        padding: 1rem 1.5rem; /* Reduced internal padding for the card */
+        height: auto; /* IMPORTANT: Allow height to adjust to content on small screens */
+        min-height: 500px; /* Optional: Set a minimum height to prevent it from being too short */
+                           /* You might need to adjust this `min-height` based on your content */
+    }
+
+   .contact-section .contact-container .form-header h3 {
+        font-size: 18px; /* Smaller font size for form header title */
+        margin-bottom: 0.25rem;
+        line-height: 1.5rem;
+    }
+
+   .contact-section .contact-container .form-header p {
+        font-size: 15px; /* Smaller font size for form header description */
+    }
+
+   .contact-section .contact-container .decorative-circles {
+    display: none;
+    }
+   
+
+   .contact-section .contact-container .contact-form {
+        gap: 0.5rem; /* Reduce gap between form groups */
+    }
+
+    .contact-section .contact-container .form-row {
+       /* Ensure form-rows always stack on mobile */
+        gap: 1rem; /* Reduce gap within form-rows */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group label {
+        font-size: 14px; /* Smaller font for labels */
+        font-weight: 400;
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .contact-input {
+        padding: 0.5rem 0.6rem; /* Slightly reduced input padding */
+        font-size: 15px; /* Smaller font size for input text */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .message-input {
+        min-height: 100px; /* Slightly reduce min-height for textarea */
+    }
+
+     .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .country-code-select {
+        padding: 0.7rem 0.4rem; /* Adjusted padding */
+        font-size: 0.9rem; /* Smaller font */
+        width: 4rem; /* Adjusted width */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card .form-group .phone-number-input {
+        padding: 0.7rem 0.8rem; /* Consistent padding */
+    }
+
+    .contact-section .contact-container .contact-form-wrapper .contact-form-card  .contact-button {
+        padding: 15px; /* Smaller button padding */
+        font-size: 15px; /* Smaller button font size */
+        max-width: 12rem; /* Reduced max-width for button */
+        margin-top: 1rem; /* Reduce space above button */
+    }
+   
+}
+
+
